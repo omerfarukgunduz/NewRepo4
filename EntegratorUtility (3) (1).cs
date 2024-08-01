@@ -42,7 +42,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
         public abstract void Esle();
     }
 
-    public abstract class Genel1 : Genel
+    public abstract class EIrsaliye_EFatura : Genel
     {
         public abstract List<AlinanBelge> AlinanFaturalarListesi();
         public abstract void Indir();
@@ -52,7 +52,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
         public abstract void GonderilenGuncelleByList();
     }
 
-    public abstract class Genel2 : Genel
+    public abstract class EArsiv_EMustahsil : Genel
     {
         public abstract string Iptal();
         public abstract string Itiraz();
@@ -62,7 +62,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
 
     public static class EntegratorUtility
     {
-        public class EFatura : Genel1
+        public class EFatura : EIrsaliye_EFatura
         {
 
             public override string TopluGonder(List<BaseInvoiceUBL> Faturalar, string ENTSABLON)
@@ -1261,7 +1261,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
 
 
 
-        public class EArsiv : Genel2
+        public class EArsiv : EArsiv_EMustahsil
         {
             public static EArsivYanit Gonder(int EVRAKSN)
             {
@@ -2140,7 +2140,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
 
 
 
-        public class EIrsaliye : Genel1
+        public class EIrsaliye : EIrsaliye_EFatura
         {
 
             public override string TopluGonder(string PK, List<DespatchAdviceType> Irsaliyeler, string ENTSABLON)
@@ -3371,7 +3371,7 @@ namespace EDONUSUM.CPM.ENTEGRASYON
 
 
 
-        public class EMustahsil : Genel2
+        public class EMustahsil : EArsiv_EMustahsil
         {
             public override string Gonder(int EVRAKSN)
             {
